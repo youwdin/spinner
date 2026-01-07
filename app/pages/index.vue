@@ -9,7 +9,7 @@
     <div class="w-full lg:w-96 bg-[#0d0d0d] border-t lg:border-t-0 lg:border-l border-gray-800 overflow-y-auto">
       <div class="p-6 space-y-6">
         <div>
-          <h2 class="text-xl font-bold text-white mb-3">Entries ({{ entries.length }})</h2>
+          <h2 class="text-xl font-bold text-white mb-3">Entries ({{ entries.length >= 1000 ? '1000+' : entries.length }})</h2>
 
           <!-- Action buttons -->
           <div class="flex gap-2 mb-4">
@@ -59,16 +59,29 @@ const triggerSpin = () => {
   spinnerWheel.value?.spin();
 };
 
-const defaultEntries = [
-  'Ali',
-  'Beatriz',
-  'Diya',
-  'Eric',
-  'Fatima',
-  'Gabriel',
-  'Hanna',
-  'Fortuna',
-];
+const generateEntries = () => {
+  const names = [
+    'Adi', 'Agus', 'Ahmad', 'Aisyah', 'Aldi', 'Amir', 'Andi', 'Angga', 'Ani', 'Anita',
+    'Arif', 'Asep', 'Bagas', 'Bagus', 'Bambang', 'Budi', 'Candra', 'Cici', 'Cindy', 'Citra',
+    'Dani', 'Dedi', 'Deny', 'Dewi', 'Dian', 'Dimas', 'Dina', 'Dwi', 'Eka', 'Eko',
+    'Endang', 'Erni', 'Fajar', 'Fani', 'Farhan', 'Fatimah', 'Feri', 'Fitri', 'Galih', 'Gilang',
+    'Gunawan', 'Hadi', 'Hana', 'Hendra', 'Heri', 'Herman', 'Ika', 'Ilham', 'Imam', 'Indah',
+    'Indra', 'Irfan', 'Irwan', 'Joko', 'Juli', 'Kiki', 'Lala', 'Lina', 'Lisa', 'Lukman',
+    'Made', 'Maya', 'Mega', 'Mira', 'Mulyadi', 'Nana', 'Nanda', 'Nina', 'Nova', 'Novi',
+    'Nurul', 'Okta', 'Putu', 'Putri', 'Rahma', 'Rani', 'Ratna', 'Rena', 'Rian', 'Ricky',
+    'Rina', 'Rini', 'Rizal', 'Rizki', 'Rosa', 'Sari', 'Sinta', 'Siti', 'Sri', 'Suci',
+    'Surya', 'Tina', 'Tono', 'Tri', 'Udin', 'Vani', 'Vera', 'Wati', 'Wawan', 'Yani',
+    'Yanto', 'Yoga', 'Yudi', 'Yuli', 'Zahra', 'Zaki'
+  ];
+  const entries: string[] = [];
+  for (let i = 1; i <= 1000; i++) {
+    const name = names[Math.floor(Math.random() * names.length)];
+    entries.push(`${name} ${i}`);
+  }
+  return entries;
+};
+
+const defaultEntries = generateEntries();
 
 const entriesText = ref(defaultEntries.join('\n'));
 
