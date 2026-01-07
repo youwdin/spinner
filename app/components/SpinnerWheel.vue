@@ -124,7 +124,16 @@ const props = defineProps<{
   entries: string[];
 }>();
 
-const options = computed(() => props.entries);
+// Limit wheel display to 8 segments for visual purposes
+const displayOptions = computed(() => {
+  if (props.entries.length <= 8) {
+    return props.entries;
+  }
+  // Show "?" on wheel when there are many entries
+  return ['?', '?', '?', '?', '?', '?', '?', '?'];
+});
+
+const options = computed(() => displayOptions.value);
 
 const colors = [
   '#5B8CFF',

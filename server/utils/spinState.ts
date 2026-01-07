@@ -19,7 +19,7 @@ const generateDefaultEntries = () => {
   const entries: string[] = [];
   for (let i = 1; i <= 1000; i++) {
     const name = names[Math.floor(Math.random() * names.length)];
-    entries.push(`${name} ${i}`);
+    entries.push(name);
   }
   return entries;
 };
