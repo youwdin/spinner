@@ -18,9 +18,10 @@
               :d="getSegmentPath(index)"
               :fill="colors[index % colors.length]"
               stroke="#fff"
-              stroke-width="3"
+              :stroke-width="options.length > 50 ? 0.5 : options.length > 20 ? 1 : 3"
             />
             <text
+              v-if="showText"
               :transform="getTextTransform(index)"
               text-anchor="middle"
               class="fill-white font-bold"
@@ -124,16 +125,10 @@ const props = defineProps<{
   entries: string[];
 }>();
 
-// Limit wheel display to 8 segments for visual purposes
-const displayOptions = computed(() => {
-  if (props.entries.length <= 8) {
-    return props.entries;
-  }
-  // Show "?" on wheel when there are many entries
-  return ['?', '?', '?', '?', '?', '?', '?', '?'];
-});
+const options = computed(() => props.entries);
 
-const options = computed(() => displayOptions.value);
+// Hide text when too many entries
+const showText = computed(() => props.entries.length <= 20);
 
 const colors = [
   '#5B8CFF',
