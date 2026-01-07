@@ -17,8 +17,8 @@
             <path
               :d="getSegmentPath(index)"
               :fill="colors[index % colors.length]"
-              stroke="#fff"
-              :stroke-width="options.length > 50 ? 0.5 : options.length > 20 ? 1 : 3"
+              :stroke="options.length > 50 ? 'none' : '#fff'"
+              :stroke-width="options.length > 20 ? 1 : 3"
             />
             <text
               v-if="showText"
@@ -40,10 +40,10 @@
           <button
             @click="spin()"
             :disabled="spinning"
-            class="w-24 h-24 md:w-32 md:h-32 xl:w-40 xl:h-40 bg-white rounded-full shadow-xl flex items-center justify-center font-bold text-xl md:text-2xl xl:text-3xl hover:bg-gray-100 active:scale-95 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all touch-manipulation border-4 xl:border-6 border-gray-200"
+            class="w-12 h-12 md:w-14 md:h-14 xl:w-16 xl:h-16 bg-white rounded-full shadow-xl flex items-center justify-center font-bold text-xs md:text-sm hover:bg-gray-100 active:scale-95 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all touch-manipulation border-2 border-gray-200"
           >
-            <span v-if="!spinning" class="text-gray-800">SPIN</span>
-            <span v-else class="text-gray-500 text-base md:text-lg xl:text-xl">Spinning...</span>
+            <span v-if="!spinning" class="text-gray-800 text-xs md:text-sm">SPIN</span>
+            <span v-else class="text-gray-500 text-[10px] md:text-xs">Spinning...</span>
           </button>
         </div>
       </div>
