@@ -1,17 +1,31 @@
 let forcedWinners: (number | string)[] = [];
 let currentWinnerIndex = 0; // Track which winner to pick next (round-robin)
 
+// Generate 1000+ entries
+const generateDefaultEntries = () => {
+  const names = [
+    'Adi', 'Agus', 'Ahmad', 'Aisyah', 'Aldi', 'Amir', 'Andi', 'Angga', 'Ani', 'Anita',
+    'Arif', 'Asep', 'Bagas', 'Bagus', 'Bambang', 'Budi', 'Candra', 'Cici', 'Cindy', 'Citra',
+    'Dani', 'Dedi', 'Deny', 'Dewi', 'Dian', 'Dimas', 'Dina', 'Dwi', 'Eka', 'Eko',
+    'Endang', 'Erni', 'Fajar', 'Fani', 'Farhan', 'Fatimah', 'Feri', 'Fitri', 'Galih', 'Gilang',
+    'Gunawan', 'Hadi', 'Hana', 'Hendra', 'Heri', 'Herman', 'Ika', 'Ilham', 'Imam', 'Indah',
+    'Indra', 'Irfan', 'Irwan', 'Joko', 'Juli', 'Kiki', 'Lala', 'Lina', 'Lisa', 'Lukman',
+    'Made', 'Maya', 'Mega', 'Mira', 'Mulyadi', 'Nana', 'Nanda', 'Nina', 'Nova', 'Novi',
+    'Nurul', 'Okta', 'Putu', 'Putri', 'Rahma', 'Rani', 'Ratna', 'Rena', 'Rian', 'Ricky',
+    'Rina', 'Rini', 'Rizal', 'Rizki', 'Rosa', 'Sari', 'Sinta', 'Siti', 'Sri', 'Suci',
+    'Surya', 'Tina', 'Tono', 'Tri', 'Udin', 'Vani', 'Vera', 'Wati', 'Wawan', 'Yani',
+    'Yanto', 'Yoga', 'Yudi', 'Yuli', 'Zahra', 'Zaki'
+  ];
+  const entries: string[] = [];
+  for (let i = 1; i <= 1000; i++) {
+    const name = names[Math.floor(Math.random() * names.length)];
+    entries.push(`${name} ${i}`);
+  }
+  return entries;
+};
+
 // Entries state
-let entries: string[] = [
-  'Ali',
-  'Beatriz',
-  'Diya',
-  'Eric',
-  'Fatima',
-  'Gabriel',
-  'Hanna',
-  'Fortuna',
-];
+let entries: string[] = generateDefaultEntries();
 
 export const setEntries = (values: string[]) => {
   entries = values;
